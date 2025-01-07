@@ -15,13 +15,20 @@ export class EligibilityPageVerification {
     name: 'Confirm your insurance',
   });
 }
-export class EligibilityPageDefaultAnswers {
+export class EligibilityPageAnswers {
   constructor(private page: Page) {}
 
-  hasNonOwnerOccupants = this.page.getByTestId('hasNonOwnerOccupants-No');
-  isBusiness = this.page.getByTestId('isBusiness-No');
-  hasSwimmingPool = this.page.getByTestId('hasSwimmingPool-No');
-  hasTrampoline = this.page.getByTestId('hasTrampoline-No');
-  hasDogs = this.page.getByTestId('hasDogs-No');
-  hasExoticPets = this.page.getByTestId('hasExoticPets-No');
+  hasNonOwnerOccupantsNo = this.page.getByTestId('hasNonOwnerOccupants-No');
+  isBusinessNo = this.page.getByTestId('isBusiness-No');
+  hasSwimmingPoolNo = this.page.getByTestId('hasSwimmingPool-No');
+  hasTrampolineNo = this.page.getByTestId('hasTrampoline-No');
+  hasDogsNo = this.page.getByTestId('hasDogs-No');
+  hasExoticPetsNo = this.page.getByTestId('hasExoticPets-No');
+
+  hasNonOwnerOccupantsYes = this.page.getByTestId('hasNonOwnerOccupants-Yes');
+  isBusinessYes = this.page.getByTestId('isBusiness-Yes');
+  hasSwimmingPoolYes = this.page.getByTestId('hasSwimmingPool-Yes');
+  hasTrampolineYes = this.page.getByTestId('hasTrampoline-Yes');
+  hasDogsYes = this.page.getByTestId('hasDogs-Yes');
+  hasExoticPetsYes = this.page.getByTestId('hasExoticPets-Yes');
 }

@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import {
-  EligibilityPageDefaultAnswers,
+  EligibilityPageAnswers,
   EligibilityPageVerification,
 } from '../pages/Eligibility.page';
 
-test.describe(' Default Eligibility page verification ', () => {
+test.describe('Default Eligibility page verification ', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(
       'https://bbx-consent-flow.dev.hippo-private.com/eligibility'
@@ -32,17 +32,17 @@ test.describe(' Default Eligibility page verification ', () => {
 
   test('Eligibility page default answers verification ', async ({ page }) => {
     // Arrange
-    const consentPageAnswers = new EligibilityPageDefaultAnswers(page);
+    const consentPageAnswers = new EligibilityPageAnswers(page);
 
     // Act
 
     // Assert
-    await expect.soft(consentPageAnswers.hasNonOwnerOccupants).toBeChecked();
-    await expect.soft(consentPageAnswers.isBusiness).toBeChecked();
-    await expect.soft(consentPageAnswers.hasSwimmingPool).toBeChecked();
-    await expect.soft(consentPageAnswers.hasTrampoline).toBeChecked();
-    await expect.soft(consentPageAnswers.hasDogs).toBeChecked();
-    await expect.soft(consentPageAnswers.hasExoticPets).toBeChecked();
+    await expect.soft(consentPageAnswers.hasNonOwnerOccupantsNo).toBeChecked();
+    await expect.soft(consentPageAnswers.isBusinessNo).toBeChecked();
+    await expect.soft(consentPageAnswers.hasSwimmingPoolNo).toBeChecked();
+    await expect.soft(consentPageAnswers.hasTrampolineNo).toBeChecked();
+    await expect.soft(consentPageAnswers.hasDogsNo).toBeChecked();
+    await expect.soft(consentPageAnswers.hasExoticPetsNo).toBeChecked();
   });
 
   test('Eligibility page transition verification', async ({ page }) => {
