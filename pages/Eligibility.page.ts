@@ -26,6 +26,12 @@ export class EligibilityPageAnswers {
   hasExoticPetsNo = this.page.getByTestId('hasExoticPets-No');
 
   hasNonOwnerOccupantsYes = this.page.getByTestId('hasNonOwnerOccupants-Yes');
+  secondHomeNo = this.page.getByTestId('isSecondHome-No');
+  secondHomeYes = this.page.getByTestId('isSecondHome-Yes');
+  vacantNo = this.page.getByTestId('isVacantOrRented-No');
+  vacantYes = this.page.getByTestId('isVacantOrRented-Yes');
+  
+
   isBusinessYes = this.page.getByTestId('isBusiness-Yes');
   hasSwimmingPoolYes = this.page.getByTestId('hasSwimmingPool-Yes');
   hasTrampolineYes = this.page.getByTestId('hasTrampoline-Yes');
