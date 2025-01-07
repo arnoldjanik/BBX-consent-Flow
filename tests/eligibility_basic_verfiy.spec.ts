@@ -37,7 +37,6 @@ test.describe(' Default Eligibility page verification ', () => {
     // Act
 
     // Assert
-
     await expect.soft(consentPageAnswers.hasNonOwnerOccupants).toBeChecked();
     await expect.soft(consentPageAnswers.isBusiness).toBeChecked();
     await expect.soft(consentPageAnswers.hasSwimmingPool).toBeChecked();
