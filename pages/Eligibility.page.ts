@@ -30,11 +30,17 @@ export class EligibilityPageAnswers {
   secondHomeYes = this.page.getByTestId('isSecondHome-Yes');
   vacantNo = this.page.getByTestId('isVacantOrRented-No');
   vacantYes = this.page.getByTestId('isVacantOrRented-Yes');
-  
 
   isBusinessYes = this.page.getByTestId('isBusiness-Yes');
   hasSwimmingPoolYes = this.page.getByTestId('hasSwimmingPool-Yes');
   hasTrampolineYes = this.page.getByTestId('hasTrampoline-Yes');
   hasDogsYes = this.page.getByTestId('hasDogs-Yes');
   hasExoticPetsYes = this.page.getByTestId('hasExoticPets-Yes');
+
+  async nonOwner(): Promise<void> {
+    await this.hasNonOwnerOccupantsYes.click();
+    await this.secondHomeNo.click();
+    await this.vacantNo.click();
+
+  }
 }

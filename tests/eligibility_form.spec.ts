@@ -5,6 +5,7 @@ import {
 } from '../pages/Eligibility.page';
 
 test.describe('Eligibility page form options verification', () => {
+  let eligibilityPage: EligibilityPageAnswers;
   test.beforeEach(async ({ page }) => {
     await page.goto(
       'https://bbx-consent-flow.dev.hippo-private.com/eligibility'
@@ -15,10 +16,12 @@ test.describe('Eligibility page form options verification', () => {
     const formOption = new EligibilityPageAnswers(page);
     const pageTransition = new EligibilityPageVerification(page);
     //Act
-    await formOption.hasNonOwnerOccupantsYes.click();
-    await formOption.secondHomeNo.click();
-    await formOption.vacantNo.click();
-    await pageTransition.continueButton.click();
+    // await formOption.hasNonOwnerOccupantsYes.click();
+    // await formOption.secondHomeNo.click();
+    // await formOption.vacantNo.click();
+    // await pageTransition.continueButton.click();
+    await formOption.nonOwner();
+    await pageTransition.continueButton.click()
 
     //Assert
     await expect(pageTransition.checkoutHeader).toHaveText(
