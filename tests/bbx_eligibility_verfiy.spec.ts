@@ -28,6 +28,7 @@ test.describe(' Default Eligibility page verification ', () => {
       'Hippo Insurance Services (“Hippo”) is a general agent for affiliated and non-affiliated insurance companies. Hippo is licensed as a property casualty insurance agency in all states in which products are offered.'
     );
     await expect(consentPage.continueButton).toHaveText(button);
+    //git test
   });
 
   test('Eligibility page default answers verification ', async ({ page }) => {
@@ -54,6 +55,5 @@ test.describe(' Default Eligibility page verification ', () => {
     await pageTransition.continueButton.click();
 
     //Assert
-    
   });
 });
