@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test';
-import {
-  EligibilityPageAnswers,
-  EligibilityPageVerification,
-} from '../pages/Eligibility.page';
+import { EligibilityPageAnswers } from '../pages/Eligibility.page';
+import { EligibilityLocators } from '../pages/EligibilityLocators.page';
 
 test.describe('Default Eligibility page verification ', () => {
   test.beforeEach(async ({ page }) => {
@@ -13,7 +11,7 @@ test.describe('Default Eligibility page verification ', () => {
 
   test('Eligibility page verification', async ({ page }) => {
     //Arrange
-    const consentPage = new EligibilityPageVerification(page);
+    const consentPage = new EligibilityLocators(page);
     const welcomeText = 'Just a few more Questions';
     const button = 'Continue';
     const number = 'Phone 1-877-838-8866';
@@ -32,7 +30,7 @@ test.describe('Default Eligibility page verification ', () => {
 
   test('Eligibility page default answers verification ', async ({ page }) => {
     // Arrange
-    const consentPageAnswers = new EligibilityPageAnswers(page);
+    const consentPageAnswers = new EligibilityLocators(page);
 
     // Act
 
@@ -47,7 +45,7 @@ test.describe('Default Eligibility page verification ', () => {
 
   test('Eligibility page transition verification', async ({ page }) => {
     //Arrange
-    const pageTransition = new EligibilityPageVerification(page);
+    const pageTransition = new EligibilityLocators(page);
 
     //Act
     await pageTransition.continueButton.click();

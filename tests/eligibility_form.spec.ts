@@ -1,36 +1,34 @@
 import { test, expect } from '@playwright/test';
-import {
-  EligibilityPageAnswers,
-  EligibilityPageVerification,
-} from '../pages/Eligibility.page';
+import { EligibilityLocators } from '../pages/EligibilityLocators.page';
+import { EligibilityPageAnswers } from '../pages/Eligibility.page';
 
 test.describe('Eligibility page form options verification', () => {
-  let eligibilityPage: EligibilityPageAnswers;
+  let formOption: EligibilityPageAnswers;
+  let pageTransition: EligibilityLocators;
   test.beforeEach(async ({ page }) => {
     await page.goto(
       'https://bbx-consent-flow.dev.hippo-private.com/eligibility'
     );
+    formOption = new EligibilityPageAnswers(page);
+    pageTransition = new EligibilityLocators(page);
   });
+
   test('Non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
-    //Arrange
-    const formOption = new EligibilityPageAnswers(page);
-    const pageTransition = new EligibilityPageVerification(page);
     //Act
-    // await formOption.hasNonOwnerOccupantsYes.click();
-    // await formOption.secondHomeNo.click();
-    // await formOption.vacantNo.click();
-    // await pageTransition.continueButton.click();
-    await formOption.nonOwner();
-    await pageTransition.continueButton.click()
+    await formOption.nonOwner1();
 
     //Assert
     await expect(pageTransition.checkoutHeader).toHaveText(
       'Confirm your insurance application'
     );
   });
-  test('non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
-    //Arrange
+  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
     //Act
+    await formOption.nonOwner2();
+
     //Assert
+    await expect(pageTransition.checkoutHeader).toHaveText(
+      'Confirm your insurance application'
+    );
   });
 });
