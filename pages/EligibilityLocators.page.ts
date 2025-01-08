@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
 
 export const eligibilityLocators = {
-  headerText: `text = Just a few more Questions`,
-  logo: `text = Logo Hippo`,
-  phoneNumber: `text = 1-877-838-8866`,
-  agentId: `text = Your Agent`,
-  disclaimer: `text = Hippo Insurance Services`,
-  continueButton: `text = Continue`,
-  checkoutHeader: `text = Confirm Your`,
+  headerText: `h1:has-text('Just a few more Questions')`,
+  logo: `svg:has-text('Logo Hippo')`,
+  phoneNumber: `span:has-text('1-877-838-8866')`,
+  agentId: `span:has-text('Your Agent')`,
+  disclaimer: `footer:has-text('Hippo Insurance Services')`,
+  continueButton: `button[type='submit']:has-text('Continue')`,
+  checkoutHeader: `h1:has-text('Confirm Your')`,
 
   hasNonOwnerOccupantsNo: `[data-testId = 'hasNonOwnerOccupants-No']`,
   isBusinessNo: `[data-testId = 'isBusiness-No']`,

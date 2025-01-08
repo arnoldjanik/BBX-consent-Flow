@@ -1,13 +1,6 @@
 import { Page } from '@playwright/test';
 import { eligibilityLocators } from './EligibilityLocators.page';
 
-//   async nonOwner1(): Promise<void> {
-//     await eligibilityLocators.hasNonOwnerOccupantsYes.click();
-//     await eligibilityLocators.secondHomeNo.click();
-//     await eligibilityLocators.vacantNo.click();
-//     await eligibilityLocators.continueButton.click();
-//   }
-
 //  export const selectOptions = async ({
 //   secondHome,
 //   vacant,
@@ -30,10 +23,10 @@ import { eligibilityLocators } from './EligibilityLocators.page';
 
 //   await eligibilityLocators.continueButton.click();
 // };
-//  export const isBusinessYes = async ({ page }): Promise<void> => {
-//   await page.locator(eligibilityLocators.isBusinessYes).click();
-//   await page.locator(eligibilityLocators.continueButton).click();
-//  };
+export const isBusinessYes = async ({ page }): Promise<void> => {
+  await page.locator(eligibilityLocators.isBusinessYes).click();
+  await page.locator(eligibilityLocators.continueButton).click();
+};
 export const hasTrampolineYes = async ({ page }): Promise<void> => {
   await page.locator(eligibilityLocators.hasTrampolineYes).click();
   await page.locator(eligibilityLocators.continueButton).click();

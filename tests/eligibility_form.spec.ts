@@ -49,18 +49,18 @@ test.describe('Eligibility page form options verification', () => {
   //       'Confirm your insurance application'
   //     );
   //   });
-  //   test('Is business Yes', async ({ page }) => {
-  //     //Act
-  //     await formOption.isBusinessYes();
+  test('Is business Yes', async ({ page }) => {
+    //Act
+    await isBusinessYes ({ page });
 
-  //     //Assert
-  //     await expect(pageTransition.checkoutHeader).toHaveText(
-  //       'Confirm your insurance application'
-  //     );
-  //   });
+    //Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
   test('has trampoline Yes', async ({ page }) => {
     //Act
-    await hasTrampolineYes({ page });
+    await hasTrampolineYes ({ page });
 
     //Assert
     await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
