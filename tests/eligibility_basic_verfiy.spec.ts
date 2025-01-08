@@ -1,21 +1,21 @@
 import { test, expect } from '@playwright/test';
-import { EligibilityPageAnswers } from '../pages/Eligibility.page';
 import { EligibilityLocators } from '../pages/EligibilityLocators.page';
 
 test.describe('Default Eligibility page verification ', () => {
+  let consentPage: EligibilityLocators;
   test.beforeEach(async ({ page }) => {
     await page.goto(
       'https://bbx-consent-flow.dev.hippo-private.com/eligibility'
     );
+
+    consentPage = new EligibilityLocators(page);
   });
 
   test('Eligibility page verification', async ({ page }) => {
     //Arrange
-    const consentPage = new EligibilityLocators(page);
     const welcomeText = 'Just a few more Questions';
     const button = 'Continue';
     const number = 'Phone 1-877-838-8866';
-    //Act
 
     //Assert
     await expect(consentPage.headerText).toHaveText(welcomeText);
@@ -29,29 +29,21 @@ test.describe('Default Eligibility page verification ', () => {
   });
 
   test('Eligibility page default answers verification ', async ({ page }) => {
-    // Arrange
-    const consentPageAnswers = new EligibilityLocators(page);
-
-    // Act
-
     // Assert
-    await expect.soft(consentPageAnswers.hasNonOwnerOccupantsNo).toBeChecked();
-    await expect.soft(consentPageAnswers.isBusinessNo).toBeChecked();
-    await expect.soft(consentPageAnswers.hasSwimmingPoolNo).toBeChecked();
-    await expect.soft(consentPageAnswers.hasTrampolineNo).toBeChecked();
-    await expect.soft(consentPageAnswers.hasDogsNo).toBeChecked();
-    await expect.soft(consentPageAnswers.hasExoticPetsNo).toBeChecked();
+    await expect.soft(consentPage.hasNonOwnerOccupantsNo).toBeChecked();
+    await expect.soft(consentPage.isBusinessNo).toBeChecked();
+    await expect.soft(consentPage.hasSwimmingPoolNo).toBeChecked();
+    await expect.soft(consentPage.hasTrampolineNo).toBeChecked();
+    await expect.soft(consentPage.hasDogsNo).toBeChecked();
+    await expect.soft(consentPage.hasExoticPetsNo).toBeChecked();
   });
 
   test('Eligibility page transition verification', async ({ page }) => {
-    //Arrange
-    const pageTransition = new EligibilityLocators(page);
-
     //Act
-    await pageTransition.continueButton.click();
+    await consentPage.continueButton.click();
 
     //Assert
-    await expect(pageTransition.checkoutHeader).toHaveText(
+    await expect(consentPage.checkoutHeader).toHaveText(
       'Confirm your insurance application'
     );
   });
