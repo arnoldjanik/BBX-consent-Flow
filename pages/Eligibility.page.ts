@@ -7,17 +7,33 @@ export class EligibilityPageAnswers {
     this.eligibilityLocators = new EligibilityLocators(page);
   }
 
-  async nonOwner1(): Promise<void> {
-    await this.eligibilityLocators.hasNonOwnerOccupantsYes.click();
-    await this.eligibilityLocators.secondHomeNo.click();
-    await this.eligibilityLocators.vacantNo.click();
-    await this.eligibilityLocators.continueButton.click();
-  }
+  //   async nonOwner1(): Promise<void> {
+  //     await this.eligibilityLocators.hasNonOwnerOccupantsYes.click();
+  //     await this.eligibilityLocators.secondHomeNo.click();
+  //     await this.eligibilityLocators.vacantNo.click();
+  //     await this.eligibilityLocators.continueButton.click();
+  //   }
 
-  async nonOwner2(): Promise<void> {
+  async selectOptions({
+    secondHome,
+    vacant,
+  }: {
+    secondHome: boolean;
+    vacant: boolean;
+  }): Promise<void> {
     await this.eligibilityLocators.hasNonOwnerOccupantsYes.click();
-    await this.eligibilityLocators.secondHomeYes.click();
-    await this.eligibilityLocators.vacantNo.click();
+    if (secondHome) {
+      await this.eligibilityLocators.secondHomeYes.click();
+    } else {
+      await this.eligibilityLocators.secondHomeNo.click();
+    }
+
+    if (vacant) {
+      await this.eligibilityLocators.vacantYes.click();
+    } else {
+      await this.eligibilityLocators.vacantNo.click();
+    }
+
     await this.eligibilityLocators.continueButton.click();
   }
 }

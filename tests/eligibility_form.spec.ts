@@ -15,7 +15,7 @@ test.describe('Eligibility page form options verification', () => {
 
   test('Non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
     //Act
-    await formOption.nonOwner1();
+    await formOption.selectOptions({ secondHome: false, vacant: false });
 
     //Assert
     await expect(pageTransition.checkoutHeader).toHaveText(
@@ -24,7 +24,25 @@ test.describe('Eligibility page form options verification', () => {
   });
   test('Non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
     //Act
-    await formOption.nonOwner2();
+    await formOption.selectOptions({ secondHome: true, vacant: false });
+
+    //Assert
+    await expect(pageTransition.checkoutHeader).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
+    //Act
+    await formOption.selectOptions({ secondHome: true, vacant: true });
+
+    //Assert
+    await expect(pageTransition.checkoutHeader).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('Non-owner occupied Yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
+    //Act
+    await formOption.selectOptions({ secondHome: false, vacant: true });
 
     //Assert
     await expect(pageTransition.checkoutHeader).toHaveText(
