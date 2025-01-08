@@ -1,36 +1,30 @@
 import { Page } from '@playwright/test';
 
-export class EligibilityLocators {
-  constructor(private page: Page) {}
+export const eligibilityLocators = {
+  headerText: `text = Just a few more Questions`,
+  logo: `text = Logo Hippo`,
+  phoneNumber: `text = 1-877-838-8866`,
+  agentId: `text = Your Agent`,
+  disclaimer: `text = Hippo Insurance Services`,
+  continueButton: `text = Continue`,
+  checkoutHeader: `text = Confirm Your`,
 
-  headerText = this.page.getByRole('heading', {
-    name: 'Just a few more Questions',
-  });
-  logo = this.page.getByRole('img', { name: 'Logo Hippo' });
-  phoneNumber = this.page.getByRole('link', { name: 'Phone 1-877-838-' });
-  agentId = this.page.getByText('Your Agent • Reference ID:');
-  disclaimer = this.page.getByText('Hippo Insurance Services (“');
-  continueButton = this.page.getByRole('button', { name: 'Continue' });
-  checkoutHeader = this.page.getByRole('heading', {
-    name: 'Confirm your insurance',
-  });
+  hasNonOwnerOccupantsNo: `[data-testId = 'hasNonOwnerOccupants-No']`,
+  isBusinessNo: `[data-testId = 'isBusiness-No']`,
+  hasSwimmingPoolNo: `[data-testId = 'hasSwimmingPool-No']`,
+  hasTrampolineNo: `[data-testId='hasTrampoline-No']`,
+  hasDogsNo: `[data-testId = 'hasDogs-No']`,
+  hasExoticPetsNo: `[data-testId = 'hasExoticPets-No']`,
 
-  hasNonOwnerOccupantsNo = this.page.getByTestId('hasNonOwnerOccupants-No');
-  isBusinessNo = this.page.getByTestId('isBusiness-No');
-  hasSwimmingPoolNo = this.page.getByTestId('hasSwimmingPool-No');
-  hasTrampolineNo = this.page.getByTestId('hasTrampoline-No');
-  hasDogsNo = this.page.getByTestId('hasDogs-No');
-  hasExoticPetsNo = this.page.getByTestId('hasExoticPets-No');
+  hasNonOwnerOccupantsYes: `[data-testId = 'hasNonOwnerOccupants-Yes']`,
+  secondHomeNo: `[data-testId = 'isSecondHome-No']`,
+  secondHomeYes: `[data-testId = 'isSecondHome-Yes']`,
+  vacantNo: `[data-testId = 'isVacantOrRented-No']`,
+  vacantYes: `[data-testId = 'isVacantOrRented-Yes']`,
 
-  hasNonOwnerOccupantsYes = this.page.getByTestId('hasNonOwnerOccupants-Yes');
-  secondHomeNo = this.page.getByTestId('isSecondHome-No');
-  secondHomeYes = this.page.getByTestId('isSecondHome-Yes');
-  vacantNo = this.page.getByTestId('isVacantOrRented-No');
-  vacantYes = this.page.getByTestId('isVacantOrRented-Yes');
-
-  isBusinessYes = this.page.getByTestId('isBusiness-Yes');
-  hasSwimmingPoolYes = this.page.getByTestId('hasSwimmingPool-Yes');
-  hasTrampolineYes = this.page.getByTestId('hasTrampoline-Yes');
-  hasDogsYes = this.page.getByTestId('hasDogs-Yes');
-  hasExoticPetsYes = this.page.getByTestId('hasExoticPets-Yes');
-}
+  isBusinessYes: `[data-testId = 'isBusiness-Yes']`,
+  hasSwimmingPoolYes: `[data-testId = 'hasSwimmingPool-Yes']`,
+  hasTrampolineYes: `[data-testId = 'hasTrampoline-Yes']`,
+  hasDogsYe: `[data-testId = 'hasDogs-Yes']`,
+  hasExoticPetsYes: `[data-testId = 'hasExoticPets-Yes']`,
+};

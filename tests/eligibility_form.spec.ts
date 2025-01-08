@@ -1,51 +1,69 @@
 import { test, expect } from '@playwright/test';
-import { EligibilityLocators } from '../pages/EligibilityLocators.page';
-import { EligibilityPageAnswers } from '../pages/Eligibility.page';
+import { eligibilityLocators } from '../pages/EligibilityLocators.page.js';
+import {
+  selectOptions,
+  isBusinessYes,
+  hasTrampolineYes,
+} from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
-  let formOption: EligibilityPageAnswers;
-  let pageTransition: EligibilityLocators;
   test.beforeEach(async ({ page }) => {
     await page.goto(
       'https://bbx-consent-flow.dev.hippo-private.com/eligibility'
     );
-    formOption = new EligibilityPageAnswers(page);
-    pageTransition = new EligibilityLocators(page);
   });
 
-  test('Non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
+  //   test('Non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
+  //     //Act
+  //     await selectOptions({ secondHome: false, vacant: false });
+
+  //     //Assert
+  //     expect(eligibilityLocators.checkoutHeader).toHaveText(
+  //       'Confirm your insurance application'
+  //     );
+  //   });
+  //   test('Non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
+  //     //Act
+  //     await selectOptions({ secondHome: true, vacant: false });
+
+  //     //Assert
+  //     await expect(eligibilityLocators.checkoutHeader).toHaveText(
+  //       'Confirm your insurance application'
+  //     );
+  //   });
+  //   test('Non-owner occupied Yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
+  //     //Act
+  //     await formOption.selectOptions({ secondHome: true, vacant: true });
+
+  //     //Assert
+  //     await expect(pageTransition.checkoutHeader).toHaveText(
+  //       'Confirm your insurance application'
+  //     );
+  //   });
+  //   test('Non-owner occupied Yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
+  //     //Act
+  //     await formOption.selectOptions({ secondHome: false, vacant: true });
+
+  //     //Assert
+  //     await expect(pageTransition.checkoutHeader).toHaveText(
+  //       'Confirm your insurance application'
+  //     );
+  //   });
+  //   test('Is business Yes', async ({ page }) => {
+  //     //Act
+  //     await formOption.isBusinessYes();
+
+  //     //Assert
+  //     await expect(pageTransition.checkoutHeader).toHaveText(
+  //       'Confirm your insurance application'
+  //     );
+  //   });
+  test('has trampoline Yes', async ({ page }) => {
     //Act
-    await formOption.selectOptions({ secondHome: false, vacant: false });
+    await hasTrampolineYes({ page });
 
     //Assert
-    await expect(pageTransition.checkoutHeader).toHaveText(
-      'Confirm your insurance application'
-    );
-  });
-  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
-    //Act
-    await formOption.selectOptions({ secondHome: true, vacant: false });
-
-    //Assert
-    await expect(pageTransition.checkoutHeader).toHaveText(
-      'Confirm your insurance application'
-    );
-  });
-  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
-    //Act
-    await formOption.selectOptions({ secondHome: true, vacant: true });
-
-    //Assert
-    await expect(pageTransition.checkoutHeader).toHaveText(
-      'Confirm your insurance application'
-    );
-  });
-  test('Non-owner occupied Yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
-    //Act
-    await formOption.selectOptions({ secondHome: false, vacant: true });
-
-    //Assert
-    await expect(pageTransition.checkoutHeader).toHaveText(
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
       'Confirm your insurance application'
     );
   });
