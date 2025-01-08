@@ -7,7 +7,7 @@ export const eligibilityLocators = {
   agentId: `span:has-text('Your Agent')`,
   disclaimer: `footer:has-text('Hippo Insurance Services')`,
   continueButton: `button[type='submit']:has-text('Continue')`,
-  checkoutHeader: `h1:has-text('Confirm Your')`,
+  checkoutHeader: `text = Confirm your insurance application`,
 
   hasNonOwnerOccupantsNo: `[data-testId = 'hasNonOwnerOccupants-No']`,
   isBusinessNo: `[data-testId = 'isBusiness-No']`,
@@ -23,8 +23,15 @@ export const eligibilityLocators = {
   vacantYes: `[data-testId = 'isVacantOrRented-Yes']`,
 
   isBusinessYes: `[data-testId = 'isBusiness-Yes']`,
+
   hasSwimmingPoolYes: `[data-testId = 'hasSwimmingPool-Yes']`,
+  FencedNo: `[data-testId ='isSwimmingPoolFenced-No']`,
+  DivingBoardNo: `[data-testId = 'hasSwimmingPoolDivingBoard-No']`,
+  FencedYes: `[data-testId = 'isSwimmingPoolFenced-Yes']`,
+  DivingBoardYes: `[data-testId ='hasSwimmingPoolDivingBoard-Yes']`,
+
   hasTrampolineYes: `[data-testId = 'hasTrampoline-Yes']`,
+
   hasDogsYe: `[data-testId = 'hasDogs-Yes']`,
   hasExoticPetsYes: `[data-testId = 'hasExoticPets-Yes']`,
 };
