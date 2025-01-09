@@ -17,29 +17,29 @@ export const eligibilityLocators = {
   hasExoticPetsNo: `[data-testId = 'hasExoticPets-No']`,
 
   hasNonOwnerOccupantsYes: `[data-testId = 'hasNonOwnerOccupants-Yes']`,
-  secondHomeNo: `[data-testId = 'isSecondHome-No']`,
-  secondHomeYes: `[data-testId = 'isSecondHome-Yes']`,
-  vacantNo: `[data-testId = 'isVacantOrRented-No']`,
-  vacantYes: `[data-testId = 'isVacantOrRented-Yes']`,
+  secondHome: (condition: boolean) =>
+    `[data-testId = 'isSecondHome-${condition ? 'Yes' : 'No'}']`,
+  vacant: (condition: boolean) =>
+    `[data-testId = 'isVacantOrRented-${condition ? 'Yes' : 'No'}']`,
 
   isBusinessYes: `[data-testId = 'isBusiness-Yes']`,
 
   hasSwimmingPoolYes: `[data-testId = 'hasSwimmingPool-Yes']`,
-  FencedNo: `[data-testId ='isSwimmingPoolFenced-No']`,
-  DivingBoardNo: `[data-testId = 'hasSwimmingPoolDivingBoard-No']`,
-  FencedYes: `[data-testId = 'isSwimmingPoolFenced-Yes']`,
-  DivingBoardYes: `[data-testId ='hasSwimmingPoolDivingBoard-Yes']`,
+  fence: (condition: boolean) =>
+    `[data-testId = 'isSwimmingPoolFenced-${condition ? 'Yes' : 'No'}']`,
+  divingBoard: (condtion: boolean) =>
+    `[data-testId = 'hasSwimmingPoolDivingBoard-${condtion ? 'Yes' : 'No'}']`,
 
   hasTrampolineYes: `[data-testId = 'hasTrampoline-Yes']`,
 
   hasDogsYes: `[data-testId = 'hasDogs-Yes']`,
-  // breed: `[id = \'radix-:r2:\']`,
-
-  bulldog: `dialog:has-text('Bulldog')`,
+  // pureBreed: (condtion: boolean) =>
+  // `label:has-text("${condtion ? 'Breed' : 'Mixed with (optional)'}") + input`,
   breed: `label:has-text("Breed") + input`,
   breedMixed: `label:has-text("Mixed with(optional)") + input`,
-  dogBiteYes: `[data-testId = 'dogs.0.biteHistory-Yes']`,
-  dogBiteNo: `[data-testId = 'dogs.0.biteHistory-No']`,
+  dogBite: (condtion: boolean) =>
+    `[data-testId = 'dogs.0.biteHistory-${condtion ? 'Yes' : 'No'}']`,
+  anotherDog: `button:has-text('Plus Add another dog')`,
 
   // await page.getByRole('option', { name: 'Beagle' }).click();
   // await page.getByTestId('dogs.0.biteHistory-No').click();

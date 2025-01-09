@@ -5,8 +5,8 @@ import {
   isBusinessYes,
   hasTrampolineYes,
   swimmingPool,
-  pureBreed,
   dogBreed,
+  anotherDog,
 } from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
@@ -54,7 +54,7 @@ test.describe('Eligibility page form options verification', () => {
   });
   test('Has Swimming Pool Yes, 1st opt No, 2nd opt No', async ({ page }) => {
     //Act
-    await swimmingPool({ page: page, fenced: false, divingBoard: false });
+    await swimmingPool({ page: page, fence: false, divingBoard: false });
 
     //Assert
     await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
@@ -63,7 +63,7 @@ test.describe('Eligibility page form options verification', () => {
   });
   test('Has Swimming Pool yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
     //Act
-    await swimmingPool({ page: page, fenced: true, divingBoard: false });
+    await swimmingPool({ page: page, fence: true, divingBoard: false });
 
     //Assert
     await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
@@ -72,7 +72,7 @@ test.describe('Eligibility page form options verification', () => {
   });
   test('Has Swimming Pool yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
     //Act
-    await swimmingPool({ page: page, fenced: true, divingBoard: true });
+    await swimmingPool({ page: page, fence: true, divingBoard: true });
 
     //Assert
     await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
@@ -81,7 +81,7 @@ test.describe('Eligibility page form options verification', () => {
   });
   test('Has Swimming Pool yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
     //Act
-    await swimmingPool({ page: page, fenced: false, divingBoard: true });
+    await swimmingPool({ page: page, fence: false, divingBoard: true });
 
     //Assert
     await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
@@ -125,7 +125,7 @@ test.describe('Eligibility page form options verification', () => {
       'Confirm your insurance application'
     );
   });
-  test('has Dogs Yes Mixed breed bite yes ', async ({ page }) => {
+  test('has Dog Yes Mixed breed bite yes ', async ({ page }) => {
     //Act
     await dogBreed({ page: page, pureBreed: false, bite: true });
 
@@ -134,5 +134,15 @@ test.describe('Eligibility page form options verification', () => {
       'Confirm your insurance application'
     );
   });
-  //   test('has Dog yes mixed breed no bite', async ({ page }) => {});
+  test('has Dog yes mixed breed no bite', async ({ page }) => {
+    //Act
+    await dogBreed({ page: page, pureBreed: false, bite: false });
+    //Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('has 2nd Dog', async ({ page }) => {
+    await anotherDog({ page });
+  });
 });

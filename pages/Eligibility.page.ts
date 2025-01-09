@@ -14,40 +14,24 @@ export const nonOwnerOccupants = async ({
   vacant: boolean;
 }): Promise<void> => {
   await page.locator(eligibilityLocators.hasNonOwnerOccupantsYes).click();
-  if (secondHome) {
-    await page.locator(eligibilityLocators.secondHomeYes).click();
-  } else {
-    await page.locator(eligibilityLocators.secondHomeNo).click();
-  }
+  await page.locator(eligibilityLocators.secondHome(secondHome)).click();
+  await page.locator(eligibilityLocators.vacant(vacant)).click();
 
-  if (vacant) {
-    await page.locator(eligibilityLocators.vacantYes).click();
-  } else {
-    await page.locator(eligibilityLocators.vacantNo).click();
-  }
   await page.locator(eligibilityLocators.continueButton).click();
 };
 export const swimmingPool = async ({
   page,
-  fenced,
+  fence,
   divingBoard,
 }: {
   page: Page;
-  fenced: boolean;
+  fence: boolean;
   divingBoard: boolean;
 }): Promise<void> => {
   await page.locator(eligibilityLocators.hasSwimmingPoolYes).click();
-  if (fenced) {
-    await page.locator(eligibilityLocators.FencedYes).click();
-  } else {
-    await page.locator(eligibilityLocators.FencedNo).click();
-  }
+  await page.locator(eligibilityLocators.fence(fence)).click();
+  await page.locator(eligibilityLocators.divingBoard(divingBoard)).click();
 
-  if (divingBoard) {
-    await page.locator(eligibilityLocators.DivingBoardYes).click();
-  } else {
-    await page.locator(eligibilityLocators.DivingBoardNo).click();
-  }
   await page.locator(eligibilityLocators.continueButton).click();
 };
 export const isBusinessYes = async ({ page }): Promise<void> => {
@@ -69,18 +53,22 @@ export const dogBreed = async ({
   bite: boolean;
 }): Promise<void> => {
   await page.locator(eligibilityLocators.hasDogsYes).click();
+
+  // await page.locator(eligibilityLocators.pureBreed(pureBreed)).click();
+
   if (pureBreed) {
     await page.locator(eligibilityLocators.breed).fill(pure);
   } else {
     await page.locator(eligibilityLocators.breed).fill(pure);
     await page.locator(eligibilityLocators.breedMixed).fill(mixed);
   }
-  if (bite) {
-    await page.locator(eligibilityLocators.dogBiteYes).click();
-  } else {
-    await page.locator(eligibilityLocators.dogBiteNo).click();
-  }
+  await page.locator(eligibilityLocators.dogBite(bite)).click();
 
+  await page.locator(eligibilityLocators.continueButton).click();
+};
+export const anotherDog = async ({ page }): Promise<void> => {
+  await page.locator(eligibilityLocators.hasDogsYes).click();
+  await page.locator(eligibilityLocators.anotherDog).click();
   await page.locator(eligibilityLocators.continueButton).click();
 };
 // export const pureBreed = async ({ page }): Promise<void> => {
