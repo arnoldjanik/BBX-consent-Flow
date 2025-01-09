@@ -32,6 +32,22 @@ export const eligibilityLocators = {
 
   hasTrampolineYes: `[data-testId = 'hasTrampoline-Yes']`,
 
-  hasDogsYe: `[data-testId = 'hasDogs-Yes']`,
+  hasDogsYes: `[data-testId = 'hasDogs-Yes']`,
+  // breed: `[id = \'radix-:r2:\']`,
+
+  bulldog: `dialog:has-text('Bulldog')`,
+  breed: `label:has-text("Breed") + input`,
+  breedMixed: `label:has-text("Mixed with(optional)") + input`,
+  dogBiteYes: `[data-testId = 'dogs.0.biteHistory-Yes']`,
+  dogBiteNo: `[data-testId = 'dogs.0.biteHistory-No']`,
+
+  // await page.getByRole('option', { name: 'Beagle' }).click();
+  // await page.getByTestId('dogs.0.biteHistory-No').click();
+  // await page.getByTestId('dogs.0.biteHistory-Yes').click();
+  // await page.getByLabel('').nth(1).click();
+  // await page.getByRole('option', { name: 'Dalmatian' }).click();
+  // await page.getByRole('button', { name: 'Plus Add another dog' }).click();
+  // await page.getByRole('button', { name: 'Trash' }).nth(1).click();
+
   hasExoticPetsYes: `[data-testId = 'hasExoticPets-Yes']`,
 };

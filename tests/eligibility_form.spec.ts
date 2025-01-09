@@ -5,6 +5,8 @@ import {
   isBusinessYes,
   hasTrampolineYes,
   swimmingPool,
+  pureBreed,
+  dogBreed,
 } from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
@@ -105,4 +107,32 @@ test.describe('Eligibility page form options verification', () => {
       'Confirm your insurance application'
     );
   });
+  test('has Dogs Yes Pure breed bite yes ', async ({ page }) => {
+    //Act
+    await dogBreed({ page: page, pureBreed: true, bite: true });
+
+    //Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('has Dogs Yes Pure breed bite no ', async ({ page }) => {
+    //Act
+    await dogBreed({ page: page, pureBreed: true, bite: false });
+
+    //Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('has Dogs Yes Mixed breed bite yes ', async ({ page }) => {
+    //Act
+    await dogBreed({ page: page, pureBreed: false, bite: true });
+
+    // Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  //   test('has Dog yes mixed breed no bite', async ({ page }) => {});
 });
