@@ -3,6 +3,7 @@ import { eligibilityLocators } from './EligibilityLocators.page';
 
 const pure = 'Bulldog';
 const mixed = 'Golden Retriver';
+const exotic = 'Beagle';
 const checkoutText = 'Confirm your insurance application';
 
 export const clickContinue = async (page: Page): Promise<void> => {
@@ -98,5 +99,17 @@ export const anotherDog = async ({
 };
 export const dogRequired = async ({ page }): Promise<void> => {
   await page.locator(eligibilityLocators.hasDogsYes).click();
+  await clickContinue(page);
+};
+export const exoticPet = async ({
+  page,
+  bite,
+}: {
+  page: Page;
+  bite: boolean;
+}): Promise<void> => {
+  await page.locator(eligibilityLocators.hasExoticPetsYes).click();
+  await page.locator(eligibilityLocators.exoticPetType).fill(exotic);
+  await page.locator(eligibilityLocators.exoticBite(bite)).click();
   await clickContinue(page);
 };

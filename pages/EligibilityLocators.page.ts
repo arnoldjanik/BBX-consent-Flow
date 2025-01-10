@@ -35,4 +35,7 @@ export const eligibilityLocators = {
   dogRemoval: `svg:has-text('Trash')`,
   dogError: `[data-testId = 'dogs.0.breed-error-message']`,
   hasExoticPetsYes: `[data-testId = 'hasExoticPets-Yes']`,
+  exoticPetType: `label:has-text('Type of exotic pet') + input`,
+  exoticBite: (condtion: boolean) =>
+    `[data-testId = 'exoticPets.0.biteHistory-${condtion ? 'Yes' : 'No'}']`,
 };

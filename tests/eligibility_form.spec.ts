@@ -9,6 +9,7 @@ import {
   anotherDog,
   assertCheckoutHeader,
   dogRequired,
+  exoticPet,
 } from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
@@ -74,7 +75,6 @@ test.describe('Eligibility page form options verification', () => {
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-
   test('is business Yes', async ({ page }) => {
     //Act
     await isBusinessYes({ page });
@@ -137,5 +137,13 @@ test.describe('Eligibility page form options verification', () => {
     await expect(page.locator(eligibilityLocators.dogError)).toHaveText(
       'Info Required'
     );
+  });
+  test('exotic pet no bite', async ({ page }) => {
+    await exoticPet({ page: page, bite: false });
+    await assertCheckoutHeader(page, 'Confirm your insurance application');
+  });
+  test('exotic pet bite', async ({ page }) => {
+    await exoticPet({ page: page, bite: true });
+    await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
 });
