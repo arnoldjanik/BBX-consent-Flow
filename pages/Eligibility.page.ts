@@ -96,3 +96,7 @@ export const anotherDog = async ({
   }
   await clickContinue(page);
 };
+export const dogRequired = async ({ page }): Promise<void> => {
+  await page.locator(eligibilityLocators.hasDogsYes).click();
+  await clickContinue(page);
+};

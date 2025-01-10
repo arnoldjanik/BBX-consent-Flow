@@ -8,6 +8,7 @@ import {
   dogBreed,
   anotherDog,
   assertCheckoutHeader,
+  dogRequired,
 } from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
@@ -17,56 +18,56 @@ test.describe('Eligibility page form options verification', () => {
     );
   });
 
-  test('Non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
+  test('non-owner occupied Yes, 1st opt No, 2nd opt No', async ({ page }) => {
     //Act
     await nonOwnerOccupants({ page: page, secondHome: false, vacant: false });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
+  test('non-owner occupied Yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
     //Act
     await nonOwnerOccupants({ page: page, secondHome: true, vacant: false });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Non-owner occupied Yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
+  test('non-owner occupied Yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
     //Act
     await nonOwnerOccupants({ page: page, secondHome: true, vacant: true });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Non-owner occupied Yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
+  test('non-owner occupied Yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
     //Act
     await nonOwnerOccupants({ page: page, secondHome: false, vacant: true });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Has Swimming Pool Yes, 1st opt No, 2nd opt No', async ({ page }) => {
+  test('has Swimming Pool Yes, 1st opt No, 2nd opt No', async ({ page }) => {
     //Act
     await swimmingPool({ page: page, fence: false, divingBoard: false });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Has Swimming Pool yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
+  test('has Swimming Pool yes, 1st opt Yes, 2nd opt No', async ({ page }) => {
     //Act
     await swimmingPool({ page: page, fence: true, divingBoard: false });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Has Swimming Pool yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
+  test('has Swimming Pool yes, 1st opt Yes, 2nd opt Yes', async ({ page }) => {
     //Act
     await swimmingPool({ page: page, fence: true, divingBoard: true });
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
-  test('Has Swimming Pool yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
+  test('has Swimming Pool yes, 1st opt No, 2nd opt Yes', async ({ page }) => {
     //Act
     await swimmingPool({ page: page, fence: false, divingBoard: true });
 
@@ -74,7 +75,7 @@ test.describe('Eligibility page form options verification', () => {
     await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
 
-  test('Is business Yes', async ({ page }) => {
+  test('is business Yes', async ({ page }) => {
     //Act
     await isBusinessYes({ page });
 
@@ -128,5 +129,13 @@ test.describe('Eligibility page form options verification', () => {
 
     //Assert
     await assertCheckoutHeader(page, 'Confirm your insurance application');
+  });
+  test('breed required error', async ({ page }) => {
+    //Act
+    await dogRequired({ page });
+    // Assert
+    await expect(page.locator(eligibilityLocators.dogError)).toHaveText(
+      'Info Required'
+    );
   });
 });
