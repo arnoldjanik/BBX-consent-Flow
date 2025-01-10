@@ -7,6 +7,7 @@ import {
   swimmingPool,
   dogBreed,
   anotherDog,
+  assertCheckoutHeader,
 } from '../pages/Eligibility.page.js';
 
 test.describe('Eligibility page form options verification', () => {
@@ -94,9 +95,7 @@ test.describe('Eligibility page form options verification', () => {
     await isBusinessYes({ page });
 
     //Assert
-    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
-      'Confirm your insurance application'
-    );
+    await assertCheckoutHeader(page, 'Confirm your insurance application');
   });
   test('has trampoline Yes', async ({ page }) => {
     //Act
@@ -143,6 +142,21 @@ test.describe('Eligibility page form options verification', () => {
     );
   });
   test('has 2nd Dog', async ({ page }) => {
-    await anotherDog({ page });
+    //Act
+    await anotherDog({ page: page, otherDog: true });
+
+    // Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
+  });
+  test('2nd dog row removal', async ({ page }) => {
+    //Act
+    await anotherDog({ page: page, otherDog: false });
+
+    //Assert
+    await expect(page.locator(eligibilityLocators.checkoutHeader)).toHaveText(
+      'Confirm your insurance application'
+    );
   });
 });

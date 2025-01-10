@@ -40,14 +40,7 @@ export const eligibilityLocators = {
   dogBite: (condtion: boolean) =>
     `[data-testId = 'dogs.0.biteHistory-${condtion ? 'Yes' : 'No'}']`,
   anotherDog: `button:has-text('Plus Add another dog')`,
-
-  // await page.getByRole('option', { name: 'Beagle' }).click();
-  // await page.getByTestId('dogs.0.biteHistory-No').click();
-  // await page.getByTestId('dogs.0.biteHistory-Yes').click();
-  // await page.getByLabel('').nth(1).click();
-  // await page.getByRole('option', { name: 'Dalmatian' }).click();
-  // await page.getByRole('button', { name: 'Plus Add another dog' }).click();
-  // await page.getByRole('button', { name: 'Trash' }).nth(1).click();
+  dogRemoval: `svg:has-text('Trash')`,
 
   hasExoticPetsYes: `[data-testId = 'hasExoticPets-Yes']`,
 };
