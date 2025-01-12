@@ -38,4 +38,7 @@ export const eligibilityLocators = {
   exoticPetType: `label:has-text('Type of exotic pet') + input`,
   exoticBite: (condtion: boolean) =>
     `[data-testId = 'exoticPets.0.biteHistory-${condtion ? 'Yes' : 'No'}']`,
+  anotherPet: `button:has-text('Plus Add another pet')`,
+  petRemoval: `svg:has-text('Trash')`,
+  petError: `[data-testid='exoticPets.0.type-error-message']`,
 };

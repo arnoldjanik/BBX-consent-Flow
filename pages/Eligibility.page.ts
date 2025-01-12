@@ -113,3 +113,30 @@ export const exoticPet = async ({
   await page.locator(eligibilityLocators.exoticBite(bite)).click();
   await clickContinue(page);
 };
+export const anotherPet = async ({
+  page,
+  otherPet,
+}: {
+  page: Page;
+  otherPet: boolean;
+}): Promise<void> => {
+  await page.locator(eligibilityLocators.hasExoticPetsYes).click();
+  await page.locator(eligibilityLocators.anotherPet).click();
+
+  const breeds = otherPet ? [0, 1] : [0]; // Choose indices based on `otherDog`
+
+  for (const index of breeds) {
+    await page
+      .locator(eligibilityLocators.exoticPetType)
+      .nth(index)
+      .fill(exotic);
+  }
+  if (!otherPet) {
+    await page.locator(eligibilityLocators.dogRemoval).nth(1).click();
+  }
+  await clickContinue(page);
+};
+export const petRequired = async ({ page }): Promise<void> => {
+  await page.locator(eligibilityLocators.hasExoticPetsYes).click();
+  await clickContinue(page);
+};
